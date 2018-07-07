@@ -29,6 +29,7 @@
     self.path = @"/mqtt";
     self.tls = false;
     self.allowUntrustedCertificates = false;
+    self.extraHeaders = @{};
     self.pinnedCertificates = nil;
     return self;
 }
@@ -40,7 +41,11 @@
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[self endpointURL]];
     urlRequest.SR_SSLPinnedCertificates = self.pinnedCertificates;
     NSArray <NSString *> *protocols = @[@"mqtt"];
-    
+  
+    [self.extraHeaders enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
+      [urlRequest addValue:obj forHTTPHeaderField:key];
+    }];
+
     self.websocket = [[SRWebSocket alloc] initWithURLRequest:urlRequest
                                                    protocols:protocols
                               allowsUntrustedSSLCertificates:self.allowUntrustedCertificates];

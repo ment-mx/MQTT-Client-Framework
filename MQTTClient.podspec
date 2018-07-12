@@ -1,13 +1,13 @@
 Pod::Spec.new do |mqttc|
 	mqttc.name         = "MQTTClient"
-	mqttc.version      = "0.14.0"
+	mqttc.version      = "0.15.0"
 	mqttc.summary      = "iOS, macOS and tvOS native ObjectiveC MQTT Client Framework"
 	mqttc.homepage     = "https://github.com/novastone-media/MQTT-Client-Framework"
 	mqttc.license      = { :type => "EPLv1", :file => "LICENSE" }
 	mqttc.author       = { "novastonemedia" => "ios@novastonemedia.com" }
 	mqttc.source       = {
 		:git => "https://github.com/novastone-media/MQTT-Client-Framework.git",
-		:tag => "0.14.0",
+		:tag => "0.15.0",
 		:submodules => true
 	}
 
@@ -75,15 +75,15 @@ Pod::Spec.new do |mqttc|
 	end
 
 	mqttc.subspec 'Manager' do |manager|
-		manager.source_files =	"MQTTClient/MQTTClient/MQTTSessionManager.{h,m}", 
+		manager.source_files =	"MQTTClient/MQTTClient/MQTTSessionManager.{h,m}",
 					"MQTTClient/MQTTClient/ReconnectTimer.{h,m}",
 					"MQTTClient/MQTTClient/ForegroundReconnection.{h,m}"
 		manager.dependency 'MQTTClient/Min'
 	end
 
 	mqttc.subspec 'ManagerL' do |managerl|
-		managerl.source_files =	"MQTTClient/MQTTClient/MQTTSessionManager.{h,m}", 
-					"MQTTClient/MQTTClient/ReconnectTimer.{h,m}", 
+		managerl.source_files =	"MQTTClient/MQTTClient/MQTTSessionManager.{h,m}",
+					"MQTTClient/MQTTClient/ReconnectTimer.{h,m}",
 					"MQTTClient/MQTTClient/ForegroundReconnection.{h,m}"
 		managerl.dependency 'MQTTClient/MinL'
 		managerl.xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'LUMBERJACK=1' }
